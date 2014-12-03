@@ -15,9 +15,9 @@ Taking such changes into consideration, the new proposed definition of a constex
 
 ```C++
 constexpr int prev(int x)
-  { return --x; }               		// <font color='green'>OK error: use of increment
+  { return --x; }               		// C++14 OK, C++11 error: use of increment
 
-constexpr int g(int x, int n) { 	// OK error: body not just "return expr"
+constexpr int g(int x, int n) { 	// C++14 OK C++11 error: body not just "return expr"
   int r = 1;
   while (--n > 42) r *= x;
   return r;
