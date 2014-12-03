@@ -16,3 +16,15 @@ N3652: Relaxing Requirements for ConstExpr Functions Steers the Future of C++ in
 4) objects whose lifetime began within the constexpr evaluation can mutate.
 
   Taking such changes into consideration, the new proposed definition of a constexpr function is as follows.  First and foremost, it shall not be virtual.  Furthermore, its return type shall be a literal type, as shall each of its parameter types.  Its function body must be equal to delete, default, or a compound statement that cannot contain any of the following: an asm-definition, a goto statement, a try-block, or a definition of a variable of non-literal type or of static or thread storage duration or for which no initialization is performed.  This differs greatly from the old definition which required that constexpr functions must contain only: null statements, static_assert-declarations, typedef declarations and alias-declarations that do not define classes or enumerations, using-declarations, using-directives, and exactly one return statement.  Consider the following example code: 
+
+--------------------------------------------------------------------------------------------------------------------------------
+constexpr int prev(int x)
+  { return --x; }               		// OK error: use of increment
+
+constexpr int g(int x, int n) { 	// OK error: body not just "return expr"
+  int r = 1;
+  while (--n > 42) r *= x;
+  return r;
+}
+--------------------------------------------------------------------------------------------------------------------------------
+
