@@ -23,5 +23,6 @@ constexpr int g(int x, int n) { 	// C++14 OK C++11 error: body not just "return 
   return r;
 }
 ```
+It is quite obvious that both these functions, while once illegal and prone to error, are now accepted under the refined definition of constexpr functions.
 
 
