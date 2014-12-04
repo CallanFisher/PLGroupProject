@@ -31,7 +31,7 @@ Now that constant expression can handle multiple variables or values, you can no
 ```C++
 constexpr int f(int a) {
   int n = a;
-  ++n;                 	 	// '++n' is not a constant expression
+  ++n;                 	  	// '++n' is not a constant expression
   return n * a;
 }
 
@@ -39,8 +39,8 @@ int k = f(4);           		// OK, this is a constant expression
                         		// 'n' in 'f' can be modified because its lifetime
                         		// began during the evaluation of the expression.
 
-constexpr int k2 = ++k; 	// error, not a constant expression, cannot modify
-                       		// 'k' because its lifetime did not begin within
+constexpr int k2 = ++k; 	  // error, not a constant expression, cannot modify
+                       		  // 'k' because its lifetime did not begin within
                         		// this expression.
 
 struct X {
@@ -53,8 +53,8 @@ constexpr int g() {
   X x;                  		// initialization of 'x' is a constant expression
   return x.n;
 }
-constexpr int k3 = g(); 	// OK, this is a constant expression
+constexpr int k3 = g(); 	  // OK, this is a constant expression
                         		// 'x.n' can be modified because the lifetime of
-                      		// 'x' began during the evaluation of 'g()'.
+                      		  // 'x' began during the evaluation of 'g()'.
   ```
 This approach allows arbitrary variable mutation within an evaluation while keeping the essential properties of constant expression evaluation being independent from the mutable global state of the program. So a constant expression evaluates to the same value no matter when it is evaluated and excepting when the value is unspecified.
