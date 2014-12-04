@@ -25,4 +25,36 @@ constexpr int g(int x, int n) { 	// C++14 OK, C++11 error: body not just "return
 ```
 It is quite obvious that both these functions, while once illegal and prone to error, are now accepted under the refined definition of constexpr functions.
 
+One of the main goals of the N3597 “Relaxing constraints on constexpr functions”, while relaxing the constexpr, was to make C++ easier to understand by naturally combining constant expressions. C++11 had restrictions preventing natural combination between other parts of the language such as for loops for example you could only pass in a single expression so it wouldn’t work. But by removing these restrictions not only does it make it more straightforward to understand but it gives the programmer more freedom because now there aren’t as many rules and restrictions. By loosening these rules it now allows constexpr to be more unrestricted at compile-time, meaning constexpr code can be passed multiple variables and still run at compile time. While C++11 allowed constexpr to be executed at compile time it could only pass in a single value and with the C++14 update it can pass in multiple values or variables while still running at compile time. This also makes a more a natural combination of expressions because now you don’t have to do anything different for constant expressions because it can handle multiple variables just like other expressions. This is a nice change because it is unifying C++ while making it easier to use with less rules.  
 
+Now that constant expression can handle multiple variables or values, you can now change objects within the constant expression, which is known as Object Mutation. Object Mutation are objects that can be modified within the evaluation of a constant expression. Object Mutation will occur until the evaluation of the constant expression ends or the lifetime of the object ends; however, mutable objects cannot be modified by later constant expression evaluation. Consider the following snippets of code:
+```C++
+constexpr int f(int a) {
+  int n = a;
+  ++n;                 	 	// '++n' is not a constant expression
+  return n * a;
+}
+
+int k = f(4);           		// OK, this is a constant expression
+                        		// 'n' in 'f' can be modified because its lifetime
+                        		// began during the evaluation of the expression.
+
+constexpr int k2 = ++k; 	// error, not a constant expression, cannot modify
+                       		// 'k' because its lifetime did not begin within
+                        		// this expression.
+
+struct X {
+  constexpr X() : n(5) {
+    n *= 2;             		// not a constant expression
+  }
+  int n;
+};
+constexpr int g() {
+  X x;                  		// initialization of 'x' is a constant expression
+  return x.n;
+}
+constexpr int k3 = g(); 	// OK, this is a constant expression
+                        		// 'x.n' can be modified because the lifetime of
+                      		// 'x' began during the evaluation of 'g()'.
+  ```
+This approach allows arbitrary variable mutation within an evaluation while keeping the essential properties of constant expression evaluation being independent from the mutable global state of the program. So a constant expression evaluates to the same value no matter when it is evaluated and excepting when the value is unspecified.
