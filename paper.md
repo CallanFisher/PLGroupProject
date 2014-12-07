@@ -1,5 +1,5 @@
 ##N3652: Relaxing Requirements for ConstExpr Functions Steers the Future of C++ in a Novice-friendly Direction
-#### Authors: Michelle Bray, Callan Fisher, Marc Simpson
+### Authors: Michelle Bray, Callan Fisher, Marc Simpson
 ================================================================================================================================
 We decided to explore the new C++14 update, implemented on August 18th of 2014.  According to Bjarne Stroustrup, one of the major players in the creation of C++14, “[It] is simply the completion of the work that became C++11.”  The improvements in this update, although seemingly minor, are actually quite important.  While deliberately small, they are the first big step towards making the language as a whole more appealing for novice users.  It patches up some issues encountered with C++11, while making it a cleaner, simpler, and faster language.  
 
@@ -19,7 +19,7 @@ constexpr int prev(int x){
 
 constexpr int g(int x, int n) { 	  // C++14 OK, C++11 error: body not just "return expr"
   int r = 1;
-  while (--n > 42) r *= x;
+  while (--n > 0) r *= x;
   return r;
 }
 ```
@@ -36,7 +36,7 @@ constexpr int f(int a) {
   return n * a;
 }
 
-int k = f(4);           		// OK, this is a constant expression
+int k = f(42);           		// OK, this is a constant expression
                         		// 'n' in 'f' can be modified because its lifetime
                         		// began during the evaluation of the expression.
 
@@ -46,7 +46,7 @@ constexpr int k2 = ++k; 	 // error, not a constant expression, cannot modify
 
 struct X {
   constexpr X() : n(5) {
-    n *= 2;             		// not a constant expression
+    n *= 42;             		// not a constant expression
   }
   int n;
 };
@@ -76,8 +76,8 @@ constexpr int first_val(int n) {
   static int value = n;             // error: not a constant expression
   return value;
 }
-const int N = first_val(5);
-int arr[first_val(10)];
+const int N = first_val(42);
+int arr[first_val(422)];
 ```
 If one is initializing a constexpr variable, rules need to be in place that prevent the dependence of the initial value of the variable on the order of the implementation of constexpr call.  This means that the order in which you call variables is unimportant because it will find the error before the variables are actually called.  In the above example, restricting constant expression declarations forces the program to terminate before it reads the variables.  Restructuring the static and local_thread rules allows the constant expression. 
 
