@@ -13,7 +13,7 @@ Taking such changes into consideration, the new proposed definition of a constex
 
 ```C++
 constexpr int prev(int x){
-   return --x;                		// C++14 OK, C++11 error: use of increment
+   return --x;                		   // C++14 OK, C++11 error: use of increment
 }
 
 constexpr int g(int x, int n) { 	  // C++14 OK, C++11 error: body not just "return expr"
@@ -31,7 +31,7 @@ Now that constant expressions can handle multiple variables or values, it is pos
 ```C++
 constexpr int f(int a) {
   int n = a;
-  ++n;                 	  	// '++n' is not a constant expression
+  ++n;                 	  // '++n' is not a constant expression
   return n * a;
 }
 
@@ -39,8 +39,8 @@ int k = f(4);           		// OK, this is a constant expression
                         		// 'n' in 'f' can be modified because its lifetime
                         		// began during the evaluation of the expression.
 
-constexpr int k2 = ++k; 	  // error, not a constant expression, cannot modify
-                       		  // 'k' because its lifetime did not begin within
+constexpr int k2 = ++k; 	 // error, not a constant expression, cannot modify
+                       		 // 'k' because its lifetime did not begin within
                         		// this expression.
 
 struct X {
@@ -53,7 +53,7 @@ constexpr int g() {
   X x;                  		// initialization of 'x' is a constant expression
   return x.n;
 }
-constexpr int k3 = g(); 	  // OK, this is a constant expression
+constexpr int k3 = g(); 	 // OK, this is a constant expression
                         		// 'x.n' can be modified because the lifetime of
                       		  // 'x' began during the evaluation of 'g()'.
   ```
@@ -64,4 +64,5 @@ Although this doesn’t seem like that big of a change, this new approach allows
 Richard Smith addresses both the C++11 and the C++14 definitions of a constexpr function in his online article, “Relaxing constraints on constexpr functions.”  C++11 states, “A literal constant expression is a prvalue core constant expression of literal type, but not pointer type (after conversions as required by the context).  For a literal constant expression of array or class type, each subobject of its value shall have been initialized by a constant expression.  A reference constant expression is an lvalue core constant expression that designates an object with static storage duration or a function.  An address constant expression is a prvalue core constant expression (after conversions as required by the context) of type std::nullptr_t or of pointer type that evaluates to the address of an object with static storage duration, to the address of a function, or to a null pointer value.  Collectively, literal constant expressions, reference constant expressions, and address constant expressions are called constant expressions.”  N3652 proposed the following change: “A constant expression is either a glvalue core constant expression whose value refers to an object with static storage duration or to a function, or a prvalue core constant expression whose value is an object where, for that object and each of its subobjects: 1) each non-static data member of reference type refers to an object with static storage duration or to a function, and 2) if the object or subobject is of pointer type, it contains the address of an object with static storage duration, the address past the end of such an object, the address of a function, or a null pointer value.” 
 
 This proposal includes changes that deal with with glvalues and prvalues. A glvalue (generalized lvalue) is a type of lvalue or xvalue.  An lvalue designates a function or an object.  An xvalue refers to an object that is typically near the end of its lifetime; it is the result of certain kinds of expressions involving rvalue references.  A prvalue is a pure rvalue, which is a temporary object or subobject thereof, or a value that is not associated with an object; however, this cannot be an xvalue.
+
 All in all, proposal N3597 was rightfully approved and included in C++14, the most recent improvement from C++11.  Upon first inspection, the update may seem relatively minor, but it actually plays an important underlying role in helping the language transition to a more user-friendly state.  Mr. Stroustrup explains his hope for the future of the language as a whole when he states, “I hope that the tide has turned so that C++ is becoming more novice friendly.  This goal is theoretically obtainable in the next few planned updates, seeing as how changes in C++14 got the ball rolling, so to speak.  This is especially evident with the relaxed restrictions for constexpr functions, the overarching goal of proposal N3597.
