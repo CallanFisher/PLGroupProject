@@ -1,4 +1,5 @@
 N3652: Relaxing Requirements for ConstExpr Functions Steers the Future of C++ in a Novice-friendly Direction
+## Authors: Michelle Bray, Callan Fisher, Marc Simpson
 ================================================================================================================================
 We decided to explore the new C++14 update, implemented on August 18th of 2014.  According to Bjarne Stroustrup, one of the major players in the creation of C++14, “[It] is simply the completion of the work that became C++11.”  The improvements in this update, although seemingly minor, are actually quite important.  While deliberately small, they are the first big step towards making the language as a whole more appealing for novice users.  It patches up some issues encountered with C++11, while making it a cleaner, simpler, and faster language.  
 
@@ -70,7 +71,7 @@ Each subobject of a literal constant expression, of either array or class type, 
 >A constant expression is either a glvalue [a generalized lvalue] core constant expression whose value refers to an object with static storage duration or to a function, or a prvalue core constant expression whose value is an object where, for that object and each of its subobjects: 1) each non-static data member of reference type refers to an object with static storage duration or to a function, and 2) if the object or subobject is of pointer type, it contains the address of an object with static storage duration, the address past the end of such an object, the address of a function, or a null pointer value. 
 
 By relaxing the rules for constant expressions, we must be more strict with static local variables and how they are defined in order to prevent side-effects.  When declaring a constexpr function which contains a variable of static or thread storage duration, there needs to be additional restrictions to ensure that the evaluation of the code runs correctly.  This means that you cannot set a static or unchanged variable to a variable as such:
-```
+```C++
 constexpr int first_val(int n) {
   static int value = n;             // error: not a constant expression
   return value;
