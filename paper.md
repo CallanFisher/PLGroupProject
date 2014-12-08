@@ -32,31 +32,31 @@ Now that constant expressions can handle multiple variables or values, it is pos
 ```C++
 constexpr int f(int a) {
   int n = a;
-  ++n;                 	  // '++n' is not a constant expression
+  ++n;                 	  // ++n is not a constant expression
   return n * a;
 }
 
-int k = f(42);           		// OK, this is a constant expression
-                        		// 'n' in 'f' can be modified because its lifetime
-                        		// began during the evaluation of the expression.
+int k = f(42);           	// int k = f(42) is a constant expression
+                        		// function f can be modified because its lifetime
+                        		// began during the evaluation of the expression
 
 constexpr int k2 = ++k; 	 // error, not a constant expression, cannot modify
-                       		 // 'k' because its lifetime did not begin within
-                        		// this expression.
+                       		 // k because its lifetime did not begin within
+                        		// this expression
 
 struct X {
   constexpr X() : n(5) {
-    n *= 42;             		// not a constant expression
+    n *= 42;             		// Once again not a constant expression
   }
   int n;
 };
 constexpr int g() {
-  X x;                  		// initialization of 'x' is a constant expression
+  X x;                  		// initialization of x is a constant expression
   return x.n;
 }
-constexpr int k3 = g(); 	 // OK, this is a constant expression
-                        		// 'x.n' can be modified because the lifetime of
-                      		  // 'x' began during the evaluation of 'g()'.
+constexpr int k3 = g(); 	 // int k3 = g() is a constant expression
+                        		// x.n can be modified because the lifetime of
+                      		  // x began during the evaluation of g()
   ```
 This approach allows arbitrary variable mutation within an evaluation while keeping the essential properties of constant expression evaluation being independent from the mutable global state of the program. So a constant expression evaluates to the same value no matter when it is evaluated and excepting when the value is unspecified.
 
