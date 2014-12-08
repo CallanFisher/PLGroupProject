@@ -84,3 +84,15 @@ If one is initializing a constexpr variable, rules need to be in place to preven
 In our personal opinions, we believe that the overall update to C++14 is a beneficial step towards improving the language as a whole.  The primary goal of this particular update was to fix bugs; along similar lines, it also aims to incorporate small improvements to simplify mastery of the language.  The particular proposal that we focused on, N3597, successfully aids in reaching this goal.  This is primarily done by relaxing constant expressions while also improving the natural combination and flow of the language.
 
 All in all, proposal N3597 was rightfully approved and included in C++14, the most recent improvement from C++11.  Upon first inspection, the update may seem relatively minor, but it actually plays an important underlying role in helping the language transition to a more user-friendly state.  Mr. Stroustrup explains his hope for the future of the language as a whole when he states, “I hope that the tide has turned so that C++ is becoming more novice friendly."  This goal is theoretically obtainable in the next few planned updates, seeing as how changes in C++14 got the ball rolling, so to speak.  This is especially evident with the relaxed restrictions for constexpr functions, the overarching goal of proposal N3597.
+
+
+###Sources
+http://meetingcpp.com/index.php/br/items/looking-at-c14.html
+ 
+http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3597.html
+ 
+http://www.infoq.com/news/2014/08/cpp14-here-features
+
+http://electronicdesign.com/dev-tools/bjarne-stroustrup-talks-about-c14
+
+http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
