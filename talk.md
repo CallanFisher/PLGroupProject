@@ -73,6 +73,20 @@ Must contain only:
 
 ------------------
 
+# Revised Definition of constexpr Function
+
+- Not Virtual
+
+- Return type is of literal type
+
+- Function body cannot contain:
+  - asm-definition
+  - goto
+  - try-block
+  - Definition of variable of non-literal type
+
+------------------
+
 # Example Code
 
 ```C++
