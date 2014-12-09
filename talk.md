@@ -38,9 +38,9 @@
 
 - Less error prone
 
--Easier for beginners to learn
+- Easier for beginners to learn
 
--What do you think?
+- What do you think?
 
 ------------------
 
