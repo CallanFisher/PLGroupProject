@@ -16,6 +16,21 @@
 
 ------------------
 
+# …To C++14
+
+- Relaxes restrictions for constexpr
+
+- Allows variable mutation
+
+- Additional restrictions for static and local_thread variables
+
+- Still executed at compile time
+- 
+------------------
+
+
+
+
 ![picture of spaghetti](images/spaghetti.jpg) ...example image
 
 
