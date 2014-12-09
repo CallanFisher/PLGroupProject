@@ -1,5 +1,7 @@
 % C++14’S Relaxing Requirements for constexpr Functions
+
 % Michelle Bray, Callan Fisher, Marc Simpson
+
 % December 2014
 
 # From C++11…
@@ -8,7 +10,7 @@
 
 - Executed at compile time
 
--Only contain a single expression
+- Only contain a single expression
 
 ------------------
 
