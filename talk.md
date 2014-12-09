@@ -25,7 +25,7 @@
 - Additional restrictions for static and local_thread variables
 
 - Still executed at compile time
-- 
+
 ------------------
 
 
