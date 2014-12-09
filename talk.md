@@ -31,7 +31,30 @@
 
 
 
-![picture of spaghetti](images/spaghetti.jpg) ...example image
+------------------
+# Example Code(2)
+
+```C++
+constexpr int first_val ( int n ) {
+  static int value = n;            	 // error: not a constant expression
+  return value;
+}
+
+const int N = first_val(42);
+int arr[first_val(422)];
+```
+------------------
+# Example Code(2)
+
+```C++
+constexpr int first_val ( int n ) {
+  static int value = n;            	 // error: not a constant expression
+  return value;
+}
+
+const int N = first_val(42);
+int arr[first_val(422)];
+```
 ------------------
 #Novice Friendly
 
