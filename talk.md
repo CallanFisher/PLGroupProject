@@ -33,7 +33,7 @@
 #Static Local Variables
 
 - Relaxing rules for constexpr leads to increased restrictions for static local variables
-*- Prevents side effects
+-     Prevents side effects
 
 - Additional restrictions to ensure evaluation runs correctly
 ------------------
