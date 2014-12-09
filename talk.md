@@ -28,9 +28,11 @@
 
 # Bjarne Stroustrup
 
+![screenshot](http://i.imgur.com/fYRLzSm.png?1)
+
 - Major player in creation of C++
 
-> *“C++14 is simply the completion of the work that became C++11”*
+*“C++14 is simply the completion of the work that became C++11”*
 
 
 ------------------
@@ -73,17 +75,12 @@ Must contain only:
 
 ------------------
 
-# Revised Definition of constexpr Function
-
+#Revised Definition of constexpr Function
 - Not Virtual
-
 - Return type is of literal type
-
 - Function body cannot contain:
-  - asm-definition
-  - goto
-  - try-block
-  - Definition of variable of non-literal type
+  -asm-definition
+  -goto
 
 ------------------
 
