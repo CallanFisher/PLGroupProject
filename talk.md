@@ -27,6 +27,14 @@
 - Still executed at compile time
 
 ------------------
+# Bjarne Stroustrup
+
+- Major player in creation of C++
+
+*“C++14 is simply the completion of the work that became C++11”*
+
+
+------------------
 #Example Code
 
 ```C++
@@ -34,7 +42,7 @@ constexpr int prev(int x) {
    return --x;                            // C++14 OK, C++11 error: use of increment
  }   
                      	
-constexpr int g(int x, int n) {      	// C++14 OK, C++11 error: body not just 
+constexpr int g(int x, int n) {      	 // C++14 OK, C++11 error: body not just 
    int r = 1;			                 // “return expression”
    while (--n > 0) r *= x;
    return r;
