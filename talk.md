@@ -35,9 +35,10 @@
 ------------------
 #Novice Friendly
 
-“I hope that the tide has turned so that C++ is becoming more novice friendly." – Bjarne Stroustrup
+*“I hope that the tide has turned so that C++ is becoming more novice friendly."* – Bjarne Stroustrup
 
--Less restrictions = more intuitive for beginners
+- Less restrictions = more intuitive for beginners
+
  
 ------------------
 # Personal Opinion
@@ -46,7 +47,7 @@
 
 - Simplifies update
 
--Natural combination and flow 
+- Natural combination and flow 
 
 ------------------
 # Future of C++
