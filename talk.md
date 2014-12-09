@@ -2,8 +2,6 @@
 
 ## Michelle Bray, Callan Fisher, Marc Simpson
 
-### December 2014
-
 ------------------
 
 # From C++11…
@@ -27,6 +25,7 @@
 - Still executed at compile time
 
 ------------------
+
 # Bjarne Stroustrup
 
 ![screenshot](http://i.imgur.com/fYRLzSm.png?1)
@@ -35,8 +34,8 @@
 
 *“C++14 is simply the completion of the work that became C++11”*
 
-
 ------------------
+
 #Example Code
 
 ```C++
@@ -52,6 +51,7 @@ constexpr int g(int x, int n) {      	 // C++14 OK, C++11 error: body not just
 ```
 
 ------------------
+
 #constexpr and Multiple Variables
 
 - Handle multiple variables
@@ -59,6 +59,7 @@ constexpr int g(int x, int n) {      	 // C++14 OK, C++11 error: body not just
 - Object mutation
 
 ------------------
+
 # Object Mutation
 
 - Change objects within constant expressions
@@ -66,6 +67,7 @@ constexpr int g(int x, int n) {      	 // C++14 OK, C++11 error: body not just
 - Occurs until end of evaluation or lifetime of object
 
 ------------------
+
 # constexpr Function Definitions
 
 - *“A literal constant expression is a prvalue core constant expression of literal type, but not pointer type (after conversions as required by the context).”* – Richard Smith
@@ -73,6 +75,7 @@ constexpr int g(int x, int n) {      	 // C++14 OK, C++11 error: body not just
 - Literal, reference, and address constant expressions unified under constant expressions
 
 ------------------
+
 # Continued
 
 C++14:
@@ -90,6 +93,7 @@ C++14:
 - Additional restrictions to ensure evaluation runs correctly
 
 ------------------
+
 # Example Code
 
 ```C++
@@ -102,6 +106,7 @@ const int N = first_val(42);
 int arr[first_val(422)];
 ```
 ------------------
+
 # Example Code(2)
 
 ```C++
@@ -114,6 +119,7 @@ const int N = first_val(42);
 int arr[first_val(422)];
 ```
 ------------------
+
 #Novice Friendly
 
 *“I hope that the tide has turned so that C++ is becoming more novice friendly."* – Bjarne Stroustrup
@@ -122,6 +128,7 @@ int arr[first_val(422)];
 
  
 ------------------
+
 # Personal Opinion
 
 - Beneficial update
@@ -131,6 +138,7 @@ int arr[first_val(422)];
 - Natural combination and flow 
 
 ------------------
+
 # Future of C++
 
 - Less error prone
