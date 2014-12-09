@@ -2,6 +2,8 @@
 
 ## Michelle Bray, Callan Fisher, Marc Simpson
 
+### December 2014
+
 ------------------
 
 # From C++11…
@@ -28,15 +30,52 @@
 
 # Bjarne Stroustrup
 
-![screenshot](http://i.imgur.com/fYRLzSm.png?1)
-
 - Major player in creation of C++
 
 *“C++14 is simply the completion of the work that became C++11”*
 
+
 ------------------
 
-#Example Code
+# Relaxed Restriction
+
+1. declaring a variable that is not static or local_thread
+2. the ability to use if (else/ if else) and switch
+3. the use of loops (for/ ranged-for, do/ do-while)
+4. objects whose lifetime began within the constexpr evaluation can mutate
+
+------------------
+
+# Relaxed Restriction (2)
+
+1. declaring a variable that is not static or local_thread
+2. the ability to use if (else/ if else) and switch
+3. the use of loops (for/ ranged-for, do/ do-while)
+4. objects whose lifetime began within the constexpr evaluation can mutate
+
+------------------
+
+# Old Definition of constexpr Function
+
+Must contain only:
+
+- Null statements
+
+- static_assert-declarations
+
+- Typedef and alias declarations that do not define:
+  - Classes
+  - Enumerations
+
+- using-declarations
+
+- using-directives
+
+- One return statement
+
+------------------
+
+# Example Code
 
 ```C++
 constexpr int prev(int x) {
@@ -52,7 +91,7 @@ constexpr int g(int x, int n) {      	 // C++14 OK, C++11 error: body not just
 
 ------------------
 
-#constexpr and Multiple Variables
+# constexpr and Multiple Variables
 
 - Handle multiple variables
 
@@ -67,10 +106,9 @@ constexpr int g(int x, int n) {      	 // C++14 OK, C++11 error: body not just
 - Occurs until end of evaluation or lifetime of object
 
 ------------------
-
 # constexpr Function Definitions
 
-- *“A literal constant expression is a prvalue core constant expression of literal type, but not pointer type (after conversions as required by the context).”* – Richard Smith
+> *“A literal constant expression is a prvalue core constant expression of literal type, but not pointer type (after conversions as required by the context).”* – Richard Smith
 
 - Literal, reference, and address constant expressions unified under constant expressions
 
@@ -78,13 +116,14 @@ constexpr int g(int x, int n) {      	 // C++14 OK, C++11 error: body not just
 
 # Continued
 
-C++14:
+######C++14:
 
 - A reference constant expression is either a glvalue or a prvalue
 
 - An address constant expression is a prvalue of type std::nullptr_t or of pointer type
 
 ------------------
+
 # Static Local Variables
 
 - Relaxing rules for constexpr leads to increased restrictions for static local variables
@@ -105,9 +144,10 @@ constexpr int first_val ( int n ) {
 const int N = first_val(42);
 int arr[first_val(422)];
 ```
+
 ------------------
 
-# Example Code(2)
+# Example Code (2)
 
 ```C++
 constexpr int first_val ( int n ) {
@@ -120,13 +160,12 @@ int arr[first_val(422)];
 ```
 ------------------
 
-#Novice Friendly
+# Novice Friendly
 
-*“I hope that the tide has turned so that C++ is becoming more novice friendly."* – Bjarne Stroustrup
+> *“I hope that the tide has turned so that C++ is becoming more novice friendly."* – Bjarne Stroustrup
 
 - Less restrictions = more intuitive for beginners
 
- 
 ------------------
 
 # Personal Opinion
@@ -145,18 +184,18 @@ int arr[first_val(422)];
 
 - Easier for beginners to learn
 
-- What do you think?
+- **What do you think?**
 
 ------------------
 
 # Sources
 
-http://meetingcpp.com/index.php/br/items/looking-at-c14.html
+- http://meetingcpp.com/index.php/br/items/looking-at-c14.html
  
-http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3597.html
+- http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3597.html
  
-http://www.infoq.com/news/2014/08/cpp14-here-features
+- http://www.infoq.com/news/2014/08/cpp14-here-features
 
-http://electronicdesign.com/dev-tools/bjarne-stroustrup-talks-about-c14
+- http://electronicdesign.com/dev-tools/bjarne-stroustrup-talks-about-c14
 
-http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
+- http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
