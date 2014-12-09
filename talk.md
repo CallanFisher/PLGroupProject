@@ -30,7 +30,7 @@
 
 - Major player in creation of C++
 
-*“C++14 is simply the completion of the work that became C++11”*
+> *“C++14 is simply the completion of the work that became C++11”*
 
 
 ------------------
