@@ -32,6 +32,21 @@
 
 
 ![picture of spaghetti](images/spaghetti.jpg) ...example image
+------------------
+#Novice Friendly
+
+“I hope that the tide has turned so that C++ is becoming more novice friendly." – Bjarne Stroustrup
+
+-Less restrictions = more intuitive for beginners
+ 
+------------------
+# Personal Opinion
+
+- Beneficial update
+
+- Simplifies update
+
+-Natural combination and flow 
 
 ------------------
 # Future of C++
