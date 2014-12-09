@@ -33,10 +33,9 @@
 #Static Local Variables
 
 - Relaxing rules for constexpr leads to increased restrictions for static local variables
-..* Prevents side effects
+*- Prevents side effects
 
 - Additional restrictions to ensure evaluation runs correctly
-
 ------------------
 # Example Code
 
@@ -74,7 +73,7 @@ int arr[first_val(422)];
 
 - Beneficial update
 
-- Simplifies update
+- Simplifies language
 
 - Natural combination and flow 
 
