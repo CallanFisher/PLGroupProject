@@ -33,4 +33,25 @@
 
 ![picture of spaghetti](images/spaghetti.jpg) ...example image
 
+------------------
+# Future of C++
 
+- Less error prone
+
+-Easier for beginners to learn
+
+-What do you think?
+
+------------------
+
+# Sources
+
+http://meetingcpp.com/index.php/br/items/looking-at-c14.html
+ 
+http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3597.html
+ 
+http://www.infoq.com/news/2014/08/cpp14-here-features
+
+http://electronicdesign.com/dev-tools/bjarne-stroustrup-talks-about-c14
+
+http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
