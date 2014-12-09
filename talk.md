@@ -28,42 +28,45 @@
 
 ------------------
 
-# Bjarne Stroustrup
-
-- Major player in creation of C++
-
-> “C++14 is simply the completion of the work that became C++11”
 
 ------------------
+#Static Local Variables
 
-# Relaxed Restriction
+- Relaxing rules for constexpr leads to increased restrictions for static local variables
+*- Prevents side effects
 
-1. declaring a variable that is not static or local_thread
-2. the ability to use if (else/ if else) and switch
-3. the use of loops (for/ ranged-for, do/ do-while)
-4. objects whose lifetime began within the constexpr evaluation can mutate.
-
+- Additional restrictions to ensure evaluation runs correctly
 ------------------
+# Example Code
 
-# Relaxed Restriction (2)
+```C++
+constexpr int first_val ( int n ) {
+  static int value = n;            	 // error: not a constant expression
+  return value;
+}
 
-1. declaring a variable that is not static or local_thread
-2. the ability to use if (else/ if else) and switch
-3. the use of loops (for/ ranged-for, do/ do-while)
-4. objects whose lifetime began within the constexpr evaluation can mutate.
-
+const int N = first_val(42);
+int arr[first_val(422)];
+```
 ------------------
+# Example Code(2)
 
+```C++
+constexpr int first_val ( int n ) {
+  static int value = n;            	 // error: not a constant expression
+  return value;
+}
 
-
-
-![picture of spaghetti](images/spaghetti.jpg) ...example image
+const int N = first_val(42);
+int arr[first_val(422)];
+```
 ------------------
-# Novice Friendly
+#Novice Friendly
 
-> “I hope that the tide has turned so that C++ is becoming more novice friendly." – Bjarne Stroustrup
+*“I hope that the tide has turned so that C++ is becoming more novice friendly."* – Bjarne Stroustrup
 
--Less restrictions = more intuitive for beginners
+- Less restrictions = more intuitive for beginners
+
  
 ------------------
 # Personal Opinion
@@ -87,12 +90,12 @@
 
 # Sources
 
-- http://meetingcpp.com/index.php/br/items/looking-at-c14.html
+http://meetingcpp.com/index.php/br/items/looking-at-c14.html
  
-- http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3597.html
+http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3597.html
  
-- http://www.infoq.com/news/2014/08/cpp14-here-features
+http://www.infoq.com/news/2014/08/cpp14-here-features
 
-- http://electronicdesign.com/dev-tools/bjarne-stroustrup-talks-about-c14
+http://electronicdesign.com/dev-tools/bjarne-stroustrup-talks-about-c14
 
-- http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
+http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
